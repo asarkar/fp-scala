@@ -34,7 +34,15 @@ object chapter02 extends AdvancedScalaModule {
 
 object chapter03 extends AdvancedScalaModule {
   object test extends ScalaTests with TestModule.ScalaTest {
-    // // use `::` for scala deps, `:` for java deps
+    override def ivyDeps = Agg(
+      ivy"org.scalactic::scalactic:$scalatestVersion",
+      ivy"org.scalatest::scalatest:$scalatestVersion",
+    )
+  }
+}
+
+object chapter04 extends AdvancedScalaModule {
+  object test extends ScalaTests with TestModule.ScalaTest {
     override def ivyDeps = Agg(
       ivy"org.scalactic::scalactic:$scalatestVersion",
       ivy"org.scalatest::scalatest:$scalatestVersion",
