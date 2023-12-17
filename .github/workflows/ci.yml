@@ -1,0 +1,20 @@
+name: CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  Build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Test
+        run: ./.github/run.sh --no-lint
+      - name: Lint
+        run: ./.github/run.sh --no-test

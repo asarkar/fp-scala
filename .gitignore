@@ -1,0 +1,20 @@
+.DS_Store
+*.class
+*.log
+*~
+
+# idea
+.idea
+.idea_modules
+/.worksheet/
+
+# mill
+out/
+
+.bsp/
+.metals/
+.vscode/
+.bloop/
+
+# virtual machine crash logs
+hs_err_pid*
