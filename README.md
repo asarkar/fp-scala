@@ -27,7 +27,7 @@ Install a BSP connection file:
 mill mill.bsp.BSP/install
 ```
 
-Then open VSCode command palette, and select "Metals: Switch build server".
+Then open VSCode command palette, and select `Metals: Switch build server`.
 
 
 ## References

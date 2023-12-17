@@ -28,7 +28,16 @@ object chapter02 extends AdvancedScalaModule {
     override def ivyDeps = Agg(
       ivy"org.scalactic::scalactic:$scalatestVersion",
       ivy"org.scalatest::scalatest:$scalatestVersion",
-      ivy"org.scalatestplus::scalacheck-1-17:$scalacheckVersion",
+    )
+  }
+}
+
+object chapter03 extends AdvancedScalaModule {
+  object test extends ScalaTests with TestModule.ScalaTest {
+    // // use `::` for scala deps, `:` for java deps
+    override def ivyDeps = Agg(
+      ivy"org.scalactic::scalactic:$scalatestVersion",
+      ivy"org.scalatest::scalatest:$scalatestVersion",
     )
   }
 }
