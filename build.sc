@@ -1,10 +1,8 @@
 import mill._, scalalib._, scalafmt._
 
-trait AdvancedScalaModule extends ScalaModule with ScalafmtModule {
+trait FPModule extends ScalaModule with ScalafmtModule {
   // val baseDir = build.millSourcePath
   def scalaVersion = "3.3.1"
-  def scalatestVersion = "3.2.17"
-  def scalacheckVersion = "3.2.17.0"
 
   override def scalacOptions: T[Seq[String]] = Seq(
     "-encoding", "UTF-8",
@@ -14,39 +12,34 @@ trait AdvancedScalaModule extends ScalaModule with ScalafmtModule {
     "-deprecation",
     "-unchecked",
     "-Wunused:all",
-    // Require then and do in control expressions
-    // "-new-syntax",
     "-rewrite",
     "-indent",
     "-source", "future",
   )
 }
 
-object chapter02 extends AdvancedScalaModule {
-  object test extends ScalaTests with TestModule.ScalaTest {
-    // // use `::` for scala deps, `:` for java deps
-    override def ivyDeps = Agg(
+trait FpTestModule extends ScalaModule with TestModule.ScalaTest {
+   def scalatestVersion = "3.2.17"
+   def scalacheckVersion = "3.2.17.0"
+
+   override def ivyDeps = Agg(
       ivy"org.scalactic::scalactic:$scalatestVersion",
       ivy"org.scalatest::scalatest:$scalatestVersion",
     )
-  }
 }
 
-object chapter03 extends AdvancedScalaModule {
-  object test extends ScalaTests with TestModule.ScalaTest {
-    override def ivyDeps = Agg(
-      ivy"org.scalactic::scalactic:$scalatestVersion",
-      ivy"org.scalatest::scalatest:$scalatestVersion",
-    )
-  }
+object chapter02 extends FPModule {
+  object test extends FpTestModule with ScalaTests
 }
 
-object chapter04 extends AdvancedScalaModule {
-  object test extends ScalaTests with TestModule.ScalaTest {
-    override def ivyDeps = Agg(
-      ivy"org.scalactic::scalactic:$scalatestVersion",
-      ivy"org.scalatest::scalatest:$scalatestVersion",
-    )
-  }
+object chapter03 extends FPModule {
+  object test extends FpTestModule with ScalaTests
 }
 
+object chapter04 extends FPModule {
+  object test extends FpTestModule with ScalaTests
+}
+
+object chapter05 extends FPModule {
+  object test extends FpTestModule with ScalaTests
+}

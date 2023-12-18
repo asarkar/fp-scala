@@ -93,12 +93,19 @@ class ListSpec extends AnyFunSpec with TableDrivenPropertyChecks:
     it("filter should remove the elements that don't satisfy the given predicate"):
       filter(List(1, 2, 3), x => x % 2 == 0) shouldBe List(2)
 
-    it("flatMap should work as expected"):
+    it("flatMap should replace each element with a list and flatten the final list"):
       flatMap(List(1, 2, 3), i => List(i, i)) shouldBe List(1, 1, 2, 2, 3, 3)
 
-    it("zipWith should work as expected"):
+    it("zipWith should combine elements from the given lists pairwise using the given function"):
       zipWith(
         List(1, 2, 3),
         List(true, false, true),
         (x, y) => if y then x.toString() else y.toString()
       ) shouldBe List("1", "false", "3")
+
+    it("zipWith should terminate with the smaller list"):
+      zipWith(
+        List(1, 2, 3),
+        List(true),
+        (x, y) => if y then x.toString() else y.toString()
+      ) shouldBe List("1")
