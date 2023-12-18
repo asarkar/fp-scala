@@ -43,3 +43,7 @@ object chapter04 extends FPModule {
 object chapter05 extends FPModule {
   object test extends FpTestModule with ScalaTests
 }
+
+object chapter06 extends FPModule {
+  object test extends FpTestModule with ScalaTests
+}

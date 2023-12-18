@@ -1,4 +1,4 @@
-[Functional Programming in Scala, Second Edition](https://www.manning.com/books/functional-programming-in-scala-second-edition)
+Exercise solutions from [Functional Programming in Scala, Second Edition](https://www.manning.com/books/functional-programming-in-scala-second-edition).
 
 [![](https://github.com/asarkar/fp-scala/workflows/CI/badge.svg)](https://github.com/asarkar/fp-scala/actions)
 
@@ -6,7 +6,7 @@ Official GitHub repo: https://github.com/fpinscala/fpinscala
 
 ## Syllabus
 
-### Introduction to functional programming
+### Part 1: Introduction to functional programming
 
 1. What is functional programming?
 
