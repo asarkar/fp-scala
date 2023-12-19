@@ -22,7 +22,7 @@ trait FpTestModule extends ScalaModule with TestModule.ScalaTest {
    def scalatestVersion = "3.2.17"
    def scalacheckVersion = "3.2.17.0"
 
-   override def ivyDeps = Agg(
+   def ivyDeps = Agg(
       ivy"org.scalactic::scalactic:$scalatestVersion",
       ivy"org.scalatest::scalatest:$scalatestVersion",
     )
@@ -46,4 +46,12 @@ object chapter05 extends FPModule {
 
 object chapter06 extends FPModule {
   object test extends FpTestModule with ScalaTests
+}
+
+object chapter10 extends FPModule {
+  object test extends FpTestModule with ScalaTests {
+    def ivyDeps = super.ivyDeps() ++ Agg(
+      ivy"org.scalatestplus::scalacheck-1-17:$scalacheckVersion"
+    )
+  }
 }

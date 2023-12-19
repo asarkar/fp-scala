@@ -20,6 +20,10 @@ Official GitHub repo: https://github.com/fpinscala/fpinscala
 
 6. Purely functional state
 
+### Part 3: Common structures in functional design
+
+10. Monoids
+
 ## Executing a main method
 ```
 ./millw <module>.runMain --mainClass <fully-qualified main class>
@@ -32,9 +36,15 @@ Official GitHub repo: https://github.com/fpinscala/fpinscala
 
 ## VSCode
 
-Open command palette: `Ctrl+Shift+P`
+* Open command palette: `Ctrl+Shift+P`
 
-Open another window: `File > New Window > Open Recent/Open Folder`
+* Open another window: `File > New Window > Open Recent/Open Folder`
+
+* To disable preview mode (don't replace current tab):
+  
+    * From command palette: `Preferences: Open User Settings`
+
+    * Add `"workbench.editor.enablePreview": false` to `settings.json` and save it.
 
 ## Mill
 
