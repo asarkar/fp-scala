@@ -4,7 +4,7 @@ trait FPModule extends ScalaModule with ScalafmtModule {
   // val baseDir = build.millSourcePath
   def scalaVersion = "3.3.1"
 
-  override def scalacOptions: T[Seq[String]] = Seq(
+  def scalacOptions: T[Seq[String]] = Seq(
     "-encoding", "UTF-8",
     "-feature",
     "-Werror",
@@ -49,6 +49,31 @@ object chapter06 extends FPModule {
 }
 
 object chapter10 extends FPModule {
+  object test extends FpTestModule with ScalaTests {
+    def ivyDeps = super.ivyDeps() ++ Agg(
+      ivy"org.scalatestplus::scalacheck-1-17:$scalacheckVersion"
+    )
+  }
+}
+
+object chapter11 extends FPModule {
+  def moduleDeps = Seq(chapter06)
+  def scalacOptions = super.scalacOptions() ++ Agg(
+    "-Ykind-projector:underscores"
+  )
+
+  object test extends FpTestModule with ScalaTests {
+    def ivyDeps = super.ivyDeps() ++ Agg(
+      ivy"org.scalatestplus::scalacheck-1-17:$scalacheckVersion"
+    )
+  }
+}
+
+object chapter12 extends FPModule {
+  def moduleDeps = Seq(chapter06, chapter10)
+  def scalacOptions = super.scalacOptions() ++ Agg(
+    "-Ykind-projector:underscores"
+  )
   object test extends FpTestModule with ScalaTests {
     def ivyDeps = super.ivyDeps() ++ Agg(
       ivy"org.scalatestplus::scalacheck-1-17:$scalacheckVersion"

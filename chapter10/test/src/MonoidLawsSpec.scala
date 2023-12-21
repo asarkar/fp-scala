@@ -10,41 +10,45 @@ class MonoidLawsSpec extends AnyFunSpec with ScalaCheckPropertyChecks with Monoi
   describe("Integers form a Monoid under addition"):
     import MonoidInstances.intAddition
 
-    associativityLaw[Int]
-    identityLaw[Int]
+    leftIdentity[Int]
+    rightIdentity[Int]
+    associativity[Int]
 
   describe("Integers form a Monoid under multiplication"):
     given Monoid[Int] = MonoidInstances.intMultiplication
 
-    associativityLaw[Int]
-    identityLaw[Int]
+    leftIdentity[Int]
+    rightIdentity[Int]
+    associativity[Int]
 
   describe("Booleans form a Monoid under disjunction (OR)"):
     given Monoid[Boolean] = MonoidInstances.booleanOr
 
-    associativityLaw[Boolean]
-    identityLaw[Boolean]
+    leftIdentity[Boolean]
+    rightIdentity[Boolean]
+    associativity[Boolean]
 
   describe("Booleans form a Monoid under conjunction (AND)"):
     given Monoid[Boolean] = MonoidInstances.booleanAnd
 
-    associativityLaw[Boolean]
-    identityLaw[Boolean]
+    leftIdentity[Boolean]
+    rightIdentity[Boolean]
+    associativity[Boolean]
 
-  describe("Options form a Monoid"):
+  describe("Option forms a Monoid"):
     given Monoid[Option[Int]] = MonoidInstances.optionMonoid
 
-    associativityLaw[Option[Int]]
-    identityLaw[Option[Int]]
+    leftIdentity[Option[Int]]
+    rightIdentity[Option[Int]]
+    associativity[Option[Int]]
 
   import MonoidInstances.WC
 
   val wcGen: Gen[WC] =
-    def genStringN(n: Int) = Gen
-      .containerOfN[List, Char](n, Gen.asciiPrintableChar)
-      .flatMap(_.mkString)
-    val genString = Gen.choose(0, 10).flatMap(genStringN)
-    val genStub   = genString.map(WC.Stub(_))
+    val genString = Gen
+      .choose(0, 10)
+      .flatMap(Gen.stringOfN(_, Gen.asciiPrintableChar))
+    val genStub = genString.map(WC.Stub(_))
     val genPart = for
       lStub <- genString
       words <- Gen.choose(0, 10)
@@ -59,24 +63,28 @@ class MonoidLawsSpec extends AnyFunSpec with ScalaCheckPropertyChecks with Monoi
     given Arbitrary[WC] = Arbitrary(wcGen)
     given Monoid[WC]    = MonoidInstances.wcMonoid
 
-    associativityLaw[WC]
-    identityLaw[WC]
+    leftIdentity[WC]
+    rightIdentity[WC]
+    associativity[WC]
 
   describe("Tuple2s form a Monoid under integer addition"):
     import MonoidInstances.{productMonoid, intAddition}
 
-    associativityLaw[(Int, Int)]
-    identityLaw[(Int, Int)]
+    leftIdentity[(Int, Int)]
+    rightIdentity[(Int, Int)]
+    associativity[(Int, Int)]
 
   describe("Tuple2s form a Monoid under integer multiplication"):
     import MonoidInstances.productMonoid
     given Monoid[Int] = MonoidInstances.intMultiplication
 
-    associativityLaw[(Int, Int)]
-    identityLaw[(Int, Int)]
+    leftIdentity[(Int, Int)]
+    rightIdentity[(Int, Int)]
+    associativity[(Int, Int)]
 
   describe("Maps form a Monoid on their values"):
     import MonoidInstances.{mapMergeMonoid, intAddition}
 
-    associativityLaw[Map[String, Int]]
-    identityLaw[Map[String, Int]]
+    leftIdentity[Map[String, Int]]
+    rightIdentity[Map[String, Int]]
+    associativity[Map[String, Int]]

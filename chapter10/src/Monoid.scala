@@ -147,4 +147,5 @@ object MonoidInstances:
     val empty: A => B = _ => mb.empty
 
 object MonoidSyntax:
-  extension [T](a: T)(using m: Monoid[T]) def |+|(b: T): T = m.combine(a, b)
+  // 'a' is the thing on which the method |+| is invoked.
+  extension [A](a: A)(using m: Monoid[A]) infix def |+|(b: A): A = m.combine(a, b)

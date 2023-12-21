@@ -24,6 +24,10 @@ Official GitHub repo: https://github.com/fpinscala/fpinscala
 
 10. Monoids
 
+11. Monads
+
+12. Applicative and traversable functors
+
 ## Executing a main method
 ```
 ./millw <module>.runMain --mainClass <fully-qualified main class>
@@ -36,7 +40,7 @@ Official GitHub repo: https://github.com/fpinscala/fpinscala
 
 ## VSCode
 
-* Open command palette: `Ctrl+Shift+P`
+* Open command palette: `Ctrl + Shift + P`
 
 * Open another window: `File > New Window > Open Recent/Open Folder`
 
@@ -45,6 +49,10 @@ Official GitHub repo: https://github.com/fpinscala/fpinscala
     * From command palette: `Preferences: Open User Settings`
 
     * Add `"workbench.editor.enablePreview": false` to `settings.json` and save it.
+
+* To see the methods in a file: `Cmd + Shift + P`
+
+* To search a file by name: `Cmd + P`
 
 ## Mill
 
