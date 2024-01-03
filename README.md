@@ -1,4 +1,4 @@
-Exercise solutions from [Functional Programming in Scala, Second Edition](https://www.manning.com/books/functional-programming-in-scala-second-edition).
+My solutions to the exercises from the book [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala-second-edition), 2nd edition.
 
 [![](https://github.com/asarkar/fp-scala/workflows/CI/badge.svg)](https://github.com/asarkar/fp-scala/actions)
 
